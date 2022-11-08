@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PersonneController!
+{% endblock %}
+
+{% block body %}
+	<ol class="list-group">
+		{% for personne in personnes %}
+			<li class="list-group-item">
+				Bonjour
+				{{personne.name}}
+				vous avez
+				{{personne.age}}
+				ans</li>
+		{% endfor %}
+	</ol>
+{% endblock %}
+
