@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<table class="table">
+		{% for note in notes %}
+			<tr class="
+																																                    {% if loop.index is odd %}
+																																                        table-primary
+																																                    {% else %}
+																																                        table-secondary
+																																                    {% endif %}
+																																                    ">
+				<td>{{note}}</td>
+			</tr>
+		{% else %}
+			Aucune note
+		{% endfor %}
+	</table>
+
+{% endblock %}
+
+{% block title %}
+	Mes notes
+{% endblock %}
+
+{% block pageTitle %}
+	Liste des notes
+{% endblock %}

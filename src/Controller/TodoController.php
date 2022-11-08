@@ -7,9 +7,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/todo')]
 class TodoController extends AbstractController
 {
-    #[Route('/todo', name: 'todo_list')]
+    #[Route('/', name: 'todo_list')]
     public function index(SessionInterface $session): Response
     {
         /* Est ce que la session contient la variable todos */
@@ -30,7 +31,7 @@ class TodoController extends AbstractController
         return $this->render('todo/index.html.twig');
     }
 
-    #[Route('/todo/add/{name}/{description}', name: 'add_todo')]
+    #[Route('/add/{name}/{description}', name: 'add_todo')]
     public function addTodo(SessionInterface $session, $name, $description): Response {
         /* Si le tableau de todo existe ou pas dans la session */
         if ($session->has('todos')) {
@@ -54,7 +55,7 @@ class TodoController extends AbstractController
         return $this->redirectToRoute('todo_list');
     }
 
-    #[Route('/todo/update/{name}/{description}', name: 'update_todo')]
+    #[Route('/update/{name}/{description}', name: 'update_todo')]
     public function updateTodo(SessionInterface $session, $name, $description): Response {
         /* Si le tableau de todo existe ou pas dans la session */
         if ($session->has('todos')) {
@@ -78,7 +79,7 @@ class TodoController extends AbstractController
         return $this->redirectToRoute('todo_list');
     }
 
-    #[Route('/todo/delete/{name}', name: 'delete_todo')]
+    #[Route('/delete/{name}', name: 'delete_todo')]
     public function deleteTodo(SessionInterface $session, $name): Response {
         /* Si le tableau de todo existe ou pas dans la session */
         if ($session->has('todos')) {

@@ -1,0 +1,16 @@
+{% extends 'parent.html.twig'%}
+
+{% block title %}
+	heritage
+{% endblock %}
+
+{% block body %}
+	{{parent()}}
+	<hr>
+
+	<img src="{{asset('assets/images/as.jpg')}}" alt="">
+	Je suis le nouveau contenu de la page heritage
+	<br>
+	<a href="{{path('app_tab', {nb: 10})}}">tab</a>
+	{{url('app_tab', {nb: 10})}}
+{% endblock %}

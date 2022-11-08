@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SecondController extends AbstractController
 {
-    #[Route('/first/{age}/{nom}', name: 'app_second')]
+    #[Route('/firste/{age}/{nom}', name: 'app_second')]
     public function index($nom, $age): Response
     {
 /*         $name = 'aymen';
