@@ -14,5 +14,13 @@
 				ans</li>
 		{% endfor %}
 	</ol>
-{% endblock %}
 
+	<div class="alert alert-info">
+		{% for stat in stats %}
+			<p>Age moyen =
+				{{stat.ageMoyen}}</p>
+			<p>Nombre de personne =
+				{{stat.nbrePersonne}}</p>
+		{% endfor %}
+	</div>
+{% endblock %}

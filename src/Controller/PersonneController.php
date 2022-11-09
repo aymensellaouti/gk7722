@@ -16,8 +16,10 @@ class PersonneController extends AbstractController
     {
         $repository = $this->doctrine->getRepository(Personne::class);
         $personnes = $repository->findAll();
+        $stats = $repository->findAvgAndNumberPersonne();
         return $this->render('personne/index.html.twig', [
             'personnes' => $personnes,
+            'stats' => $stats
         ]);
     }
 
