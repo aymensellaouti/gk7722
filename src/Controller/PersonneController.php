@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Personne;
+use App\Form\PersonneType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +21,18 @@ class PersonneController extends AbstractController
         return $this->render('personne/index.html.twig', [
             'personnes' => $personnes,
             'stats' => $stats
+        ]);
+    }
+
+    #[Route('/personne/edit', name: 'edit_personne')]
+    public function edit(): Response
+    {
+        $personne = new Personne();
+        $personne->setName('aymen');
+        /* Créer notre formulaire */
+        $form = $this->createForm(PersonneType::class, $personne);
+        return $this->render('personne/edit.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 
