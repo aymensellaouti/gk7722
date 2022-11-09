@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Hobby;
 use App\Entity\Personne;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,7 +17,12 @@ class PersonneType extends AbstractType
         $builder
             ->add('name')
             ->add('age')
-            ->add('hobbies')
+            ->add('hobbies', EntityType::class, [
+                'class' => Hobby::class,
+                'choice_label'=>'designation',
+                'expanded'=>true,
+                'multiple'=>true
+            ])
             ->add('enregistrer', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-danger']
             ])

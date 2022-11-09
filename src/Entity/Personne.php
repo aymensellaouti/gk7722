@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PersonneRepository::class)]
 class Personne
@@ -17,8 +18,15 @@ class Personne
     private ?int $id = null;
 
     #[ORM\Column(length: 60)]
+    #[Assert\Length(
+        min:3, 
+        max: 10, 
+        minMessage:"La taille minimale est 3",
+        maxMessage:"La taille maximale est 10",
+        )]
+    #[Assert\NotBlank(message: 'Ce champ est obligatoire')]
     private ?string $name = null;
-
+    #[Assert\NotBlank(message: 'Ce champ est obligatoire')]
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $age = null;
 

@@ -11,7 +11,18 @@
 				{{personne.name}}
 				vous avez
 				{{personne.age}}
-				ans</li>
+				ans,
+
+				vos hobbies sont: 
+				{% for hobby in personne.hobbies %}
+					{{hobby.designation}} 
+				{% else %}
+					Aucun
+				{% endfor %}
+				{# path chemin relatif, url pour un chemin absolue #}
+				<a href="{{path('edit_personne', {id: personne.id})}}">edit</a>
+				<a href="{{path('delete_personne', {id: personne.id})}}">delete</a>
+			</li>
 		{% endfor %}
 	</ol>
 
