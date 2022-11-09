@@ -33,6 +33,9 @@ class Personne
     #[ORM\ManyToMany(targetEntity: Hobby::class)]
     private Collection $hobbies;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $path = null;
+
     public function __construct()
     {
         $this->hobbies = new ArrayCollection();
@@ -87,6 +90,18 @@ class Personne
     public function removeHobby(Hobby $hobby): self
     {
         $this->hobbies->removeElement($hobby);
+
+        return $this;
+    }
+
+    public function getPath(): ?string
+    {
+        return $this->path;
+    }
+
+    public function setPath(?string $path): self
+    {
+        $this->path = $path;
 
         return $this;
     }

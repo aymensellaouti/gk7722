@@ -7,15 +7,21 @@
 	<ol class="list-group">
 		{% for personne in personnes %}
 			<li class="list-group-item">
+				{% if personne.path %}
+					<img width="50" heigth="50" class="rounded-circle" src="{{asset('uploads/personnes/')~personne.path}}" alt="">
+				{% else %}
+					<img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="50" heigth="50" class="rounded-circle">
+				{% endif %}
+
 				Bonjour
 				{{personne.name}}
 				vous avez
 				{{personne.age}}
 				ans,
-
-				vos hobbies sont: 
+																
+																				vos hobbies sont:
 				{% for hobby in personne.hobbies %}
-					{{hobby.designation}} 
+					{{hobby.designation}}
 				{% else %}
 					Aucun
 				{% endfor %}
