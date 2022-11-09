@@ -89,6 +89,7 @@ class PersonneController extends AbstractController
     #[Route('/personne/{id}', name: 'delete_personne')]
     public function deletePersonne($id): Response
     {
+        /* $this->denyAccessUnlessGranted('ROLE_ADMIN'); */
         $manager = $this->doctrine->getManager();
         $repository = $this->doctrine->getRepository(Personne::class);
         $personne = $repository->find($id);
