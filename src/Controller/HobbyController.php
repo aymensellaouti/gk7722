@@ -37,6 +37,7 @@ class HobbyController extends AbstractController
         return $this->renderForm('hobby/new.html.twig', [
             'hobby' => $hobby,
             'form' => $form,
+            'cc'=> 'cc'
         ]);
     }
 
