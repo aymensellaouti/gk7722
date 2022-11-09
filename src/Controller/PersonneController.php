@@ -48,12 +48,14 @@ class PersonneController extends AbstractController
             // this condition is needed because the 'brochure' field is not required
             // so the PDF file must be processed only when a file is uploaded
             if ($image) {
+                /* On renome */
                 $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
                 /* dd($newFilename); */
                 // Move the file to the directory where brochures are stored
+                /* On déplace le fichier dans notre serveur */
                 try {
                     $image->move(
                         $this->getParameter('personne_directory'),
